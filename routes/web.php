@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/id/{id}', [CustomController::class,'index'])->name('custom_route');
+
 Route::resource('todos', \App\Http\Controllers\TodoController::class);
 Route::get('todos/{todo}', [\App\Http\Controllers\TodoController::class,'destroy'])->name('todos.destory');
